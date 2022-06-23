@@ -1,0 +1,110 @@
+.fs-1 {
+    font-size: 1.700rem;
+}
+
+.fs-2 {
+    font-size: 1.350rem;
+}
+
+.fs-3 {
+    font-size: 1.125rem;
+}
+
+.fs-4 {
+    font-size: 1rem;
+}
+
+.fs-5 {
+    font-size: 0.875rem;
+}
+
+.fs-6 {
+    font-size: 0.575rem;
+}
+
+
+
+
+
+.object-cover {
+    object-fit     : cover !important;
+    object-position: center !important;
+    width          : 100%;
+    height         : 100%;
+}
+
+
+
+
+
+
+
+
+
+.c-sidebar a:hover {
+    background-color: rgba(rgb(197, 184, 184), .3) !important;
+}
+
+
+
+
+
+
+
+.table {
+    /*background-color: #ffffff !important;*/
+    font-family: inherit !important;
+    font-weight: 600 !important;
+    color      : #888 !important;
+}
+.table td,
+th {
+    vertical-align: middle !important;
+}
+.table th {
+    font-size: 13px;
+    color    : #000;
+}
+.table td {
+    font-size: 13px;
+}
+
+
+
+
+
+
+
+
+.modal-header {
+    /*padding-left  : 15px !important;*/
+    padding-top   : 8px !important;
+    padding-bottom: 8px !important;
+}
+.modal-footer {
+    padding-top   : 8px !important;
+    padding-bottom: 8px !important;
+}
+.modal-title {
+    font-size  : 15px;
+}
+.modal-body::-webkit-scrollbar {
+    width: 7px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+    background   : #acb0b9;
+    border-radius: 1px;
+}
+
+
+
+
+.form-group {
+    margin-bottom: 8px !important;
+}
+.form-group > .col-form-label {
+    margin-bottom: -2px !important;
+    font-size    : 13.5px;
+    font-weight  : 470;
+    color        : #007bff;
+}

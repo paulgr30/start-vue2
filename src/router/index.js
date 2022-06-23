@@ -1,29 +1,80 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/login",
+    name: "login",
+    component: () => import("../views/auths/Login.vue"),
+    meta: {
+      middleware: "guest",
+    },
   },
+
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+    path: "/",
+    name: "admin",
+    component: () => import("../views/layout/Container.vue"),
+    redirect: "/admin/about",
+    meta: {
+      middleware: "admin",
+    },
+    children: [
+      {
+        path: "/admin/about",
+        name: "about",
+        component: () => import("../views/About.vue"),
+        meta: {
+          middleware: "admin",
+        },
+      },
+      {
+        path: "/admin/users",
+        name: "users",
+        component: () => import("../views/users/TheUsers.vue"),
+        meta: {
+          middleware: "admin",
+        },
+      },
+      {
+        path: "/admin/profile",
+        name: "profile",
+        component: () => import("../views/auths/Profile.vue"),
+        meta: {
+          middleware: "admin",
+        },
+      },
+    ],
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
+  mode: "history",
+  routes,
+});
 
-export default router
+
+
+router.beforeEach((to, from, next) => {
+  if (Vue.store.state.mAuths.authenticated) {
+    if (to.fullPath == "/login") {
+      next({ name: "admin" });
+    }
+    next();
+  } else {
+    if (to.meta.middleware == "guest") {
+      next();
+    } else {
+      next({ name: "login" });
+    }
+  }
+});
+
+
+
+
+
+Vue.router = router;
+export default router;
