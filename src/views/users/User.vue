@@ -160,6 +160,8 @@
 </template>
 
 <script>
+import { integer } from 'vee-validate/dist/rules';
+
 export default {
   data() {
     return {
@@ -196,7 +198,7 @@ export default {
       );
 
       // Si user es un objeto vacio (Nuevo usuario) colocamos a true su propiedad is_active.
-      this.is_active = this.user.id ? this.user.is_active : 1;
+      this.is_active = this.user.id ? Number(this.user.is_active) : 1;
       // Verificamos si el usuario tiene un rol asignado
       this.selectedRole = this.user.roles ? this.user.roles[0]["name"] : null;
     },
